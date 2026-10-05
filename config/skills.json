@@ -79,5 +79,10 @@
     "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
     "license": "MIT",
     "data_note": "Figures and any 0-100 score are AI estimates from web research, not a live data feed or audit. Verify against MLS/county records before client use. See Data provenance section in SKILL.md."
+  },
+  "website-builder": {
+    "name": "website-builder",
+    "description": "Builds production-ready static websites from an intake conversation. Produces hand-written HTML5, CSS3 and vanilla ES6+ with no build tools, no frameworks and no third-party dependencies. Use when asked to create, build, design or redesign a website, landing page, brochure site or property listing site. Runs a max-five-question intake first, then emits a validated multi-page or single-page project. Every factual claim must trace to user-supplied material.",
+    "path": ".agent/skills/website_builder.md"
   }
 }

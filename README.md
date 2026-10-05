@@ -23,6 +23,8 @@ Personal agent operating system. Skills, configuration, memory, and helper scrip
 │       ├── realestate-commercial/  NOI, cap rate, lease analysis
 │       ├── realestate-flip/       ARV, rehab budget, flip margin
 │       └── realestate-quick/      60-second property snapshot
+│   ├── website_builder.md      Static site builder: intake, then
+│                              HTML/CSS/vanilla JS, no frameworks
 ├── config/
 │   ├── skills.json            Skill registry
 │   ├── .env.example           Secrets template — copy to .env
@@ -106,6 +108,22 @@ and `notes.md`. Requires:
 ```bash
 npx playwright install chromium
 ```
+
+## Website builder
+
+`skills/website_builder.md` builds static sites with no build tools and no frameworks.
+
+It runs a maximum-five-question intake first (site type/brand, audience, conversion
+action, language, verified assets), confirms the output directory, then writes semantic
+HTML5, CSS3 custom properties, and vanilla ES6+. `script.js` is emitted only when
+behavior is genuinely required.
+
+Defaults to the Makos Real Estate palette, but asks for another brand's colors rather
+than imposing them. Every contrast ratio it documents was computed, and two pairs are
+marked as forbidden because they fail WCAG AA.
+
+Design unknowns get assumed and reported; factual unknowns get the element omitted.
+Forms require a real endpoint or they become a verified `mailto:`/`tel:` link.
 
 ## Real-estate skills
 

@@ -17,3 +17,6 @@ client_secret
 # Vendored repos are reference copies; .git stripped
 vendor/repos/**/.git/
 vendor/repos/
+
+# python venv for realestate-report-pdf
+.venv/

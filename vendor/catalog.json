@@ -5,7 +5,8 @@
   "install_policy": {
     "register_only_droppable_skills": "A repo is registered in config/skills.json only if it is a skill bundle whose SKILL.md can be read directly by the agent. Tooling, plugins, proxies and training harnesses are vendored for reference only.",
     "no_duplicate_agents_dirs": "Bundles that duplicate one skill across many agent directories (.cursor, .gemini, .grok, .trae, ...) are treated as a single skill, not N skills.",
-    "overlap_check": "Before registering, check the candidate's description against existing skills to avoid competing triggers."
+    "overlap_check": "Before registering, check the candidate's description against existing skills to avoid competing triggers.",
+    "data_provenance_rule": "Before registering any skill that emits numbers, verify whether it has a live data feed (API keys, network calls for the data). If it does not, record a data_note in config/skills.json and append a 'Data provenance' section to SKILL.md stating that figures are model estimates. Required for anything a client could see."
   },
   "repos": [
     {
@@ -89,12 +90,53 @@
       "skills_found": 0,
       "installed": false,
       "reason": "Zero SKILL.md files. A single-GPU research harness based on nanochat: train.py, prepare.py, and program.md that autonomous agents edit to run 5-minute training experiments overnight. Belongs in a compute/research environment, not an AI OS skills folder."
+    },
+    {
+      "name": "zubair-trabzada/ai-realestate-claude",
+      "url": "https://github.com/zubair-trabzada/ai-realestate-claude",
+      "license": "MIT",
+      "shape": "skill bundle + subagents + python script",
+      "skills_found": 15,
+      "installed": true,
+      "installed_as": [
+        "skills/realestate-listing/",
+        "skills/realestate-mortgage/",
+        "skills/realestate-report-pdf/",
+        "skills/realestate-commercial/",
+        "skills/realestate-flip/",
+        "skills/realestate-quick/"
+      ],
+      "reason": "6 of 15 installed. Real-estate domain is directly relevant to the user's brokerage work. Selected the skills with no invented-metric risk and no overlap with go-to-market; skipped the four that duplicate GTM work and three that output unsourced scores.",
+      "not_installed": {
+        "realestate-analyze": "held - orchestrator that fans out to the skipped score skills",
+        "realestate-comps": "held - overlaps GTM comp research",
+        "realestate-invest": "held - overlaps GTM investment framing",
+        "realestate-market": "held - median price / days-on-market figures with no data feed",
+        "realestate-neighborhood": "held - school, crime, demographic scoring with no data feed",
+        "realestate-rental": "held - rental estimates with no data feed",
+        "realestate-compare": "held - same unsourced-metric issue as the above",
+        "realestate-screen": "held - property search across sources, broadens trigger surface"
+      },
+      "mods_applied": [
+        "Did NOT run install.sh: it hardcodes ~/.claude/skills/realestate/ and bypasses config/skills.json.",
+        "Rewrote frontmatter on all 6 to a single name: key plus a triggering description. Upstream had 6 of 15 skills with no description at all (skill:/name:/version: only), which would have left them untriggerable.",
+        "Appended a \"Data provenance\" section to all 6 SKILL.md files.",
+        "Recorded data_note in config/skills.json for every skill that emits numbers.",
+        "Installed requirements.txt into .venv/ (gitignored): reportlab, beautifulsoup4, requests.",
+        "Verified generate_realestate_pdf.py --demo produces a valid PDF; removed the demo output."
+      ],
+      "risk_notes": [
+        "No live data feed: no API keys, no network calls for property data. Medians, DOM, school and crime figures, cap rates and all 0-100 scores are web search plus model knowledge.",
+        "Upstream already carries Fair Housing guidance in realestate-listing (describe neighborhood by amenities and geography, never by who lives there). Kept intact.",
+        "Undisclosed estimated values in Florida marketing carry misrepresentation exposure, so the data_note instructs marking unconfirmed figures rather than filling them silently."
+      ]
     }
   ],
   "summary": {
-    "repos_reviewed": 8,
-    "installed": 2,
+    "repos_reviewed": 9,
+    "installed": 3,
     "held": 4,
-    "not_skill_shaped": 2
+    "not_skill_shaped": 2,
+    "note": "Counts are derived from the repos[] entries. A repo marked installed may contribute only a subset of its skills; see installed_as and not_installed."
   }
 }

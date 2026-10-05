@@ -32,5 +32,52 @@
     "path": ".agent/skills/humanizer/",
     "source": "https://github.com/blader/humanizer",
     "license": "MIT"
+  },
+  "realestate-listing": {
+    "name": "realestate-listing",
+    "description": "Generates MLS-ready property listing descriptions with headlines, feature highlights, neighborhood context and SEO keywords across buyer-persona styles. Includes a Fair Housing compliance checklist: describe the neighborhood by amenities and geography, never by who lives there. Use when writing or reviewing property listing copy.",
+    "path": ".agent/skills/realestate-listing/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT",
+    "data_note": "Fair Housing checklist included. Confirm property facts with the seller/MLS before publishing; never invent square footage, price, or neighborhood claims."
+  },
+  "realestate-mortgage": {
+    "name": "realestate-mortgage",
+    "description": "Mortgage calculator and affordability analysis: monthly payments, amortization, loan comparison, affordability limits, rent versus buy, and refinance break-even with rate tables. Use when a client asks about payment estimates, affordability, or rent-versus-buy math. Outputs are estimates, not a loan quote or financial advice.",
+    "path": ".agent/skills/realestate-mortgage/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT"
+  },
+  "realestate-report-pdf": {
+    "name": "realestate-report-pdf",
+    "description": "Generates a professional client-ready PDF property report from PROPERTY-*.md analysis files, with score gauges, comparison tables and financial projections. Use when compiling finished property analysis files into a deliverable. Requires reportlab.",
+    "path": ".agent/skills/realestate-report-pdf/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT",
+    "requires": "reportlab (pip3 install reportlab)"
+  },
+  "realestate-commercial": {
+    "name": "realestate-commercial",
+    "description": "Commercial property analysis: NOI, cap rate, expense ratio, tenant mix, vacancy, debt coverage, replacement cost and lease analysis. Produces a Commercial Score. Use for commercial assets. Figures are model estimates from web research, not audited financials.",
+    "path": ".agent/skills/realestate-commercial/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT",
+    "data_note": "Figures and any 0-100 score are AI estimates from web research, not a live data feed or audit. Verify against MLS/county records before client use. See Data provenance section in SKILL.md."
+  },
+  "realestate-flip": {
+    "name": "realestate-flip",
+    "description": "Fix-and-flip analysis: purchase price, ARV, rehab budget breakdown, holding costs, selling costs, profit margin, ROI, timeline and risk assessment, with a Flip Score. Use for fix-and-flip projects. Rehab and ARV figures are estimates and need local contractor and comparable validation.",
+    "path": ".agent/skills/realestate-flip/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT",
+    "data_note": "Figures and any 0-100 score are AI estimates from web research, not a live data feed or audit. Verify against MLS/county records before client use. See Data provenance section in SKILL.md."
+  },
+  "realestate-quick": {
+    "name": "realestate-quick",
+    "description": "60-second property snapshot: fast single-pass assessment with signal, key factors and a CTA for full analysis, without spawning subagents. Use for a quick read on a property address before committing to deeper analysis. Values are AI estimates, not appraisals.",
+    "path": ".agent/skills/realestate-quick/",
+    "source": "https://github.com/zubair-trabzada/ai-realestate-claude",
+    "license": "MIT",
+    "data_note": "Figures and any 0-100 score are AI estimates from web research, not a live data feed or audit. Verify against MLS/county records before client use. See Data provenance section in SKILL.md."
   }
 }

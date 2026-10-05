@@ -1,0 +1,100 @@
+{
+  "catalog_version": 1,
+  "reviewed_on": "2026-10-05",
+  "purpose": "Inspected upstream repos considered for the AI OS. Vendored copies live in .agent/vendor/repos/ and are NOT registered as skills unless marked installed=true.",
+  "install_policy": {
+    "register_only_droppable_skills": "A repo is registered in config/skills.json only if it is a skill bundle whose SKILL.md can be read directly by the agent. Tooling, plugins, proxies and training harnesses are vendored for reference only.",
+    "no_duplicate_agents_dirs": "Bundles that duplicate one skill across many agent directories (.cursor, .gemini, .grok, .trae, ...) are treated as a single skill, not N skills.",
+    "overlap_check": "Before registering, check the candidate's description against existing skills to avoid competing triggers."
+  },
+  "repos": [
+    {
+      "name": "blader/humanizer",
+      "url": "https://github.com/blader/humanizer",
+      "license": "MIT",
+      "shape": "single skill",
+      "skills_found": 1,
+      "installed": true,
+      "installed_as": "skills/humanizer/",
+      "reason": "Clean droppable skill. Strips AI tone from prose. No overlap with existing AIOS skills.",
+      "notes": "Includes scripts/validate-package.py, AGENTS.md, LICENSE."
+    },
+    {
+      "name": "anthropics/skills (skill-creator)",
+      "url": "https://github.com/anthropics/skills",
+      "license": "NOTICE: repo contains no LICENSE file at time of review; skill-creator ships its own LICENSE.txt",
+      "shape": "bundle of 20 skills",
+      "skills_found": 20,
+      "installed": true,
+      "installed_as": "skills/skill_builder/",
+      "reason": "Replaces an empty placeholder. skills/skill_builder.md was 0 bytes and registered as a working skill with no content. skill-creator is the real implementation of that intent (485 lines plus eval tooling).",
+      "notes": "Only this skill was extracted from the bundle. Remaining 19 not installed: frontend-design and canvas-design overlap with design skills already under review; xlsx/pdf/pptx are document tooling, not GTM or orchestration skills. Revisit deliberately.",
+      "license_caveat": "Confirm redistribution terms before sharing derived work."
+    },
+    {
+      "name": "pbakaus/impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "license": "Apache-2.0",
+      "shape": "single skill duplicated across agent dirs",
+      "skills_found": 24,
+      "installed": false,
+      "canonical_path": "plugin/skills/impeccable/",
+      "reason": "Hold. 23 of the 24 SKILL.md files are the same skill copied into .cursor/, .gemini/, .grok/, .trae/, .qoder/, .dsh/, .opencode/ and other agent directories. Installing all would register 24 near-identical skills and cause trigger collisions.",
+      "note": "Cargo project with Rust build tooling. Heavier than a plain skill. Extract plugin/skills/impeccable/ if wanted."
+    },
+    {
+      "name": "Leonxlnx/taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "license": "MIT",
+      "shape": "bundle of 13 design skills",
+      "skills_found": 13,
+      "installed": false,
+      "reason": "Hold. Design-focused. Overlaps with impeccable and ui-ux-pro-max; three competing design skill sets plus this AIOS's own go_to_market HTML generation creates misrouting risk.",
+      "note": "Candidate skills if a design direction is chosen: taste-skill, brutalist-skill, minimalist-skill, brandkit, imagegen-frontend-web."
+    },
+    {
+      "name": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "license": "MIT",
+      "shape": "bundle of 7 skills plus CLI",
+      "skills_found": 13,
+      "installed": false,
+      "reason": "Hold. Same design overlap as above. Also duplicates its own skills under cli/assets/skills/.",
+      "note": "Real skills live in .claude/skills/: ui-ux-pro-max, design, banner-design, ui-styling, brand, slides, design-system."
+    },
+    {
+      "name": "mksglu/context-mode",
+      "url": "https://github.com/mksglu/context-mode",
+      "license": "see repository",
+      "shape": "local proxy server with hooks, NOT a skill",
+      "skills_found": 11,
+      "installed": false,
+      "reason": "Not a prompt skill. It is a token-saving proxy: a local process with bin/, hooks/, cli.bundle.mjs and per-agent configs (Claude, Copilot CLI, Antigravity) that intercepts tool output and compresses it before it reaches the model context window. Registering it in skills.json would produce an entry that never fires correctly.",
+      "note": "Requires bun. Installs hooks and writes config. Evaluate as separate infrastructure if token cost becomes a real problem."
+    },
+    {
+      "name": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "license": "Apache-2.0",
+      "shape": "plugin marketplace, NOT a skill bundle",
+      "skills_found": 33,
+      "installed": false,
+      "reason": "Contains plugins/ and external_plugins/, each with its own install mechanism and manifest. Not copyable into a skills folder as-is."
+    },
+    {
+      "name": "karpathy/autoresearch",
+      "url": "https://github.com/karpathy/autoresearch",
+      "license": "no LICENSE file at time of review",
+      "shape": "Python training harness, NOT a skill",
+      "skills_found": 0,
+      "installed": false,
+      "reason": "Zero SKILL.md files. A single-GPU research harness based on nanochat: train.py, prepare.py, and program.md that autonomous agents edit to run 5-minute training experiments overnight. Belongs in a compute/research environment, not an AI OS skills folder."
+    }
+  ],
+  "summary": {
+    "repos_reviewed": 8,
+    "installed": 2,
+    "held": 4,
+    "not_skill_shaped": 2
+  }
+}

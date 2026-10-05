@@ -1,8 +1,10 @@
 {
   "skill-builder": {
-    "name": "skill-builder",
+    "name": "skill-creator",
     "description": "Create new skills for your AI coding agent, modify and improve existing skills, and measure skill performance. Works with any LLM-powered agent (Claude Code, OpenCode, Gemini CLI, Cursor, and others). Use when users want to create a skill from scratch, edit or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
-    "path": ".agent/skills/skill_builder.md"
+    "path": ".agent/skills/skill_builder/",
+    "source": "https://github.com/anthropics/skills",
+    "license": "see skills/skill_builder/LICENSE.txt"
   },
   "orchestrator": {
     "name": "orchestrator",
@@ -23,5 +25,12 @@
     "name": "go-to-market",
     "description": "GTM strategy skill. Given a company website URL or company documents, research and produce a standalone, click-through HTML GTM site covering sales, marketing, and customer success. Every claim traces to scraped pages, provided docs, or labeled inference.",
     "path": ".agent/skills/go_to_market.md"
+  },
+  "humanizer": {
+    "name": "humanizer",
+    "description": "Rewrite AI-sounding text so it reads like the writer without changing what it says. Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dashes everywhere, inflated claims, sales language, stock AI words, bold labels, or filler.",
+    "path": ".agent/skills/humanizer/",
+    "source": "https://github.com/blader/humanizer",
+    "license": "MIT"
   }
 }

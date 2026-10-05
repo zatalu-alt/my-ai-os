@@ -13,3 +13,7 @@ client_secret
 
 # Backup logs
 .backup.log
+
+# Vendored repos are reference copies; .git stripped
+vendor/repos/**/.git/
+vendor/repos/

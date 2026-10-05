@@ -13,9 +13,10 @@ client_secret
 
 # Backup logs
 .backup.log
+.backup-launchd.out.log
+.backup-launchd.err.log
 
-# Vendored repos are reference copies; .git stripped
-vendor/repos/**/.git/
+# Vendored repos are local reference copies; URLs tracked in vendor/catalog.json
 vendor/repos/
 
 # python venv for realestate-report-pdf

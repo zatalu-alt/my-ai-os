@@ -1,0 +1,11 @@
+# Secrets — never commit
+config/google/
+*.env
+.env
+token.json
+credentials.json
+client_secret*.json
+
+# OS noise
+.DS_Store
+Thumbs.db

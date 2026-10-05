@@ -10,3 +10,6 @@ client_secret*.json
 .DS_Store
 Thumbs.db
 client_secret
+
+# Backup logs
+.backup.log

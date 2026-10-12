@@ -84,5 +84,20 @@
     "name": "website-builder",
     "description": "Builds production-ready static websites from an intake conversation. Produces hand-written HTML5, CSS3 and vanilla ES6+ with no build tools, no frameworks and no third-party dependencies. Use when asked to create, build, design or redesign a website, landing page, brochure site or property listing site. Runs a max-five-question intake first, then emits a validated multi-page or single-page project. Every factual claim must trace to user-supplied material.",
     "path": ".agent/skills/website_builder.md"
+  },
+  "social-post": {
+    "name": "social-post",
+    "description": "Write one finished, platform-ready social post and return it as a structured object with no explanatory prose. Use when asked to draft, write, or edit a post for LinkedIn, Instagram, Twitter/X, Reddit, YouTube, or Pinterest, or when /social-post is invoked. Accepts a platform, a topic with optional source notes and links, and up to three style references.",
+    "path": ".claude/skills/social-post/"
+  },
+  "research-agent": {
+    "name": "research-agent",
+    "description": "Evidence-based research assistant for Miami luxury real estate and software competitive analysis. Gathers comparable sales, developer information, and market statistics before drafting conclusions, and compares software pricing tiers, API availability, and export capabilities. Returns answers with source links, observation dates, freshness warnings, conflicts, and limitations. Use when asked a research question about Miami or South Florida property markets, comparable sales, developers, neighborhood statistics, or when comparing software tools.",
+    "path": ".agent/skills/research-agent/"
+  },
+  "carousel-generator": {
+    "name": "carousel-generator",
+    "description": "Turns a supplied platform, topic, slide count, and optional style notes into a complete LinkedIn or Instagram carousel ready for design. Produces exactly the requested number of slides, each with a visual metadata block, a headline of at most 5 words, two or three supporting-copy lines, and a slide counter footer, plus an optional post caption with platform-appropriate hashtags. Use when asked for a carousel, a slide post, a multi-slide post, or a LinkedIn or Instagram carousel.",
+    "path": ".agent/skills/carousel-generator/"
   }
 }

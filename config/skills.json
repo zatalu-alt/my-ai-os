@@ -99,5 +99,30 @@
     "name": "carousel-generator",
     "description": "Turns a supplied platform, topic, slide count, and optional style notes into a complete LinkedIn or Instagram carousel ready for design. Produces exactly the requested number of slides, each with a visual metadata block, a headline of at most 5 words, two or three supporting-copy lines, and a slide counter footer, plus an optional post caption with platform-appropriate hashtags. Use when asked for a carousel, a slide post, a multi-slide post, or a LinkedIn or Instagram carousel.",
     "path": ".agent/skills/carousel-generator/"
+  },
+  "makos-prospecting": {
+    "name": "makos-prospecting",
+    "description": "Makos Real Estate client-prospecting workflow. Finds verified consumer leads (buyers, tenants, sellers, landlords) using strict evidence rules. Prioritizes explicit 3BR rental inquiries in Brickell (last 30 days), outputs CSV + Markdown report with full provenance, deduplicates while preserving notes/statuses, and drafts brief first responses identifying Zeynep A. Talu-Balci, MSIRE \u00b7 MSRED, Founding Broker \u00b7 Makos Real Estate. Never invents leads/contact details.",
+    "path": ".agent/skills/makos_prospecting.md"
+  },
+  "cso": {
+    "name": "cso",
+    "description": "Chief Sales Officer. Coordinates sales and delegates prospect research/outreach drafting to Lead Gen Agent. Draft-only; routes prospecting through CSO->Lead Gen.",
+    "path": ".agent/sales/subagents/cso.md"
+  },
+  "lead-gen": {
+    "name": "lead-gen",
+    "description": "Lead Generation Agent under CSO. Verifies explicit prospect inquiries with strict evidence rules; outputs CSV+Markdown+sources with drafts only.",
+    "path": ".agent/sales/subagents/lead_gen.md"
+  },
+  "cmo": {
+    "name": "cmo",
+    "description": "Chief Marketing Officer. Coordinates marketing and delegates to Content Planner Agent. Draft-only; routes content planning through CMO->Content Planner.",
+    "path": ".agent/marketing/subagents/cmo.md"
+  },
+  "content-planner": {
+    "name": "content-planner",
+    "description": "Content Planner Agent under CMO. Draft topics/hooks/captions/calendar focused on attracting consumer clients (Brickell, 2200 Brickell). Accessible sources only, drafts only.",
+    "path": ".agent/marketing/subagents/content_planner.md"
   }
 }
